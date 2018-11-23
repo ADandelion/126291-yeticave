@@ -40,7 +40,7 @@ $lots = [
         [
             'name' => 'Маска Oakley Canopy',
             'category' => 'Разное',
-            'price' => '55',
+            'price' => '5400',
             'image' => 'img/lot-6.jpg'
         ],
 ];
@@ -50,9 +50,7 @@ function formatPrice($price){
     if ($totalPrice  < 1000) {
         return $totalPrice . $rubleStyle;
     }
-    else  {
         return number_format($totalPrice , 0, '.', ' ') . $rubleStyle;
-    }
 };
 ?>
 <!DOCTYPE html>
@@ -105,8 +103,8 @@ function formatPrice($price){
     <section class="promo">
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
-        <ul class="promo__list">
         <?php foreach ($categories as  $cat):  ?>
+        <ul class="promo__list">
             <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html"><?=$cat; ?></a>
             </li>
