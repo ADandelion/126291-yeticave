@@ -45,12 +45,12 @@ $lots = [
         ],
 ];
 function formatPrice($price){
-    ceil($price);
-    if ($price < 1000) {
-        return $price ;
+    $totalPrice = ceil($price);
+    if ($totalPrice  < 1000) {
+        return $totalPrice . " " .  ₽;
     }
-    else if ($price >= 1000) {
-        return number_format($price, 0, '', ' ');
+    else if ($totalPrice  >= 1000) {
+        return number_format($totalPrice , 0, '.', ' ');
     }
 };
 ?>
