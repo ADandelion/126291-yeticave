@@ -44,12 +44,13 @@ $lots = [
             'image' => 'img/lot-6.jpg'
         ],
 ];
-function formatNumber($intNum){
-    if ($intNum < 1000) {
-        return ceil($intNum) . " " . ₽;
+function formatPrice($price){
+    ceil($price);
+    if ($price < 1000) {
+        return $price ;
     }
-    else if ($intNum > 1000) {
-        return number_format(ceil($intNum), 0, ' ', ' ') . " " .  ₽;
+    else if ($price >= 1000) {
+        return number_format($price, 0, '', ' ');
     }
 };
 ?>
@@ -126,8 +127,8 @@ function formatNumber($intNum){
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$item['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=formatNumber($item['price']); ?></span>
-                            <span class="lot__cost"><?=formatNumber($item['price']); ?><b class="rub">р</b></span>
+                            <span class="lot__amount"><?=formatPrice($item['price']); ?></span>
+                            <span class="lot__cost"><?=formatPrice($item['price']); ?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
