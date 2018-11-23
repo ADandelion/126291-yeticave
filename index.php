@@ -40,17 +40,18 @@ $lots = [
         [
             'name' => 'Маска Oakley Canopy',
             'category' => 'Разное',
-            'price' => '5400',
+            'price' => '55',
             'image' => 'img/lot-6.jpg'
         ],
 ];
 function formatPrice($price){
+    $rubleStyle = " " . "<b class=\"rub\">р</b>";
     $totalPrice = ceil($price);
     if ($totalPrice  < 1000) {
-        return $totalPrice . " " .  ₽;
+        return $totalPrice . $rubleStyle;
     }
-    else if ($totalPrice  >= 1000) {
-        return number_format($totalPrice , 0, '.', ' ');
+    else  {
+        return number_format($totalPrice , 0, '.', ' ') . $rubleStyle;
     }
 };
 ?>
@@ -128,7 +129,7 @@ function formatPrice($price){
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount"><?=formatPrice($item['price']); ?></span>
-                            <span class="lot__cost"><?=formatPrice($item['price']); ?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=formatPrice($item['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
