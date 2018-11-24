@@ -6,45 +6,52 @@ $user_avatar = 'img/user.jpg';
 $categories = ["Доски и лыжи", "Крепления", "Ботинки",
                 "Одежда", "Инструменты", "Разное"];
 
-$ads = [
+$lots = [
         [
             'name' => '2014 Rossignol District Snowboard',
-            'cat' => 'Доски и лыжи',
+            'category' => 'Доски и лыжи',
             'price' => '10999',
-            'url' => 'img/lot-1.jpg'
+            'image' => 'img/lot-1.jpg'
         ],
         [
             'name' => 'DC Ply Mens 2016/2017 Snowboard',
-            'cat' => 'Доски и лыжи',
+            'category' => 'Доски и лыжи',
             'price' => '159999',
-            'url' => 'img/lot-2.jpg'
+            'image' => 'img/lot-2.jpg'
         ],
         [
             'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-            'cat' => 'Крепления',
+            'category' => 'Крепления',
             'price' => '8000',
-            'url' => 'img/lot-3.jpg'
+            'image' => 'img/lot-3.jpg'
         ],
         [
-            'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
-            'cat' => 'Ботинки',
+            'name' => 'Ботинки для сноуборда DC Mutiny Charcoal',
+            'category' => 'Ботинки',
             'price' => '10999',
-            'url' => 'img/lot-4.jpg'
+            'image' => 'img/lot-4.jpg'
         ],
         [
-            'name' => 'Куртка для сноуборда DC Mutiny Charocal',
-            'cat' => 'Одежда',
+            'name' => 'Куртка для сноуборда DC Mutiny Charcoal',
+            'category' => 'Одежда',
             'price' => '7500',
-            'url' => 'img/lot-5.jpg'
+            'image' => 'img/lot-5.jpg'
         ],
         [
             'name' => 'Маска Oakley Canopy',
-            'cat' => 'Разное',
+            'category' => 'Разное',
             'price' => '5400',
-            'url' => 'img/lot-6.jpg'
+            'image' => 'img/lot-6.jpg'
         ],
 ];
-
+function formatPrice($price){
+    $rubleStyle = " " . "<b class=\"rub\">р</b>";
+    $totalPrice = ceil($price);
+    if ($totalPrice  < 1000) {
+        return $totalPrice . $rubleStyle;
+    }
+        return number_format($totalPrice , 0, '.', ' ') . $rubleStyle;
+};
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -71,7 +78,6 @@ $ads = [
 
         <nav class="user-menu">
 
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
         <?php if ($is_auth === 1): ?>
         <div class="user-menu__image">
             <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
@@ -81,6 +87,7 @@ $ads = [
         </div>
         <?php else: ?>
         <ul class="user-menu__list">
+
           <li class="user-menu__item">
             <a href="#">Регистрация</a>
           </li>
@@ -99,29 +106,30 @@ $ads = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
         <?php foreach ($categories as  $cat):  ?>
+
             <li class="promo__item promo__item--boards">
                 <a class="promo__link" href="pages/all-lots.html"><?=$cat; ?></a>
             </li>
-        </ul>
         <?php endforeach; ?>
+        </ul>
     </section>
     <section class="lots">
         <div class="lots__header">
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-        <?php foreach ($ads as $key => $ad): ?>
+        <?php foreach ($lots as $item): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$ad['url']; ?>" width="350" height="260" alt="">
+                    <img src="<?=$item['image']; ?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$ad['cat']; ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$ad['name']; ?></a></h3>
+                    <span class="lot__category"><?=$item['category']; ?></span>
+                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$item['name']; ?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$ad['price']; ?></span>
-                            <span class="lot__cost"><?=$ad['price']; ?><b class="rub">р</b></span>
+                            <span class="lot__amount"><?=formatPrice($item['price']); ?></span>
+                            <span class="lot__cost"><?=formatPrice($item['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
                             12:23
