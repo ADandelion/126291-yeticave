@@ -85,16 +85,17 @@ function formatPrice($price){
         <div class="user-menu__logged">
            <p><?=$user_name;?></p>
         </div>
-        <?php else: ?>
         <ul class="user-menu__list">
+        <?php else: ?>
           <li class="user-menu__item">
             <a href="#">Регистрация</a>
           </li>
           <li class="user-menu__item">
             <a href="#">Вход</a>
           </li>
+          <?php endif; ?>
         </ul>
-        <?php endif; ?>
+
         </nav>
     </div>
 </header>
