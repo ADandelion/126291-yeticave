@@ -1,6 +1,3 @@
-<?php
-$is_auth = rand(0, 1);
-?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -26,7 +23,7 @@ $is_auth = rand(0, 1);
 
             <nav class="user-menu">
 
-                <?php if ($is_auth === 1): ?>
+                <?php if ($user_auth === 1): ?>
                     <div class="user-menu__image">
                         <img src="<?=$user_avatar; ?>" width="40" height="40" alt="Пользователь">
                     </div>
