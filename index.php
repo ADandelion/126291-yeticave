@@ -1,6 +1,6 @@
 <?php
-require_once('functions.php');
-require_once('templates/data.php');
+require_once 'functions.php';
+require_once 'data.php';
 
 
 $main_content = include_template('index.php', ['categories' => $categories, 'lots' => $lots]);
@@ -13,6 +13,6 @@ $layout_content = include_template('layout.php', [
     'main' => $main_content
 ]);
 
-//var_dump($is_auth);
+
 print($layout_content);
 

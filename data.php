@@ -40,7 +40,7 @@ $lots = [
     [
         'name' => 'Маска Oakley Canopy',
         'category' => 'Разное',
-        'price' => '5400',
+        'price' => '500000',
         'image' => 'img/lot-6.jpg'
     ],
 ];
