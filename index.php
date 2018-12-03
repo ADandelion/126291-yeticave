@@ -1,9 +1,10 @@
 <?php
 require_once 'functions.php';
 require_once 'data.php';
+require_once 'data_time.php';
 
 
-$main_content = include_template('index.php', ['categories' => $categories, 'lots' => $lots]);
+$main_content = include_template('index.php', ['categories' => $categories, 'lots' => $lots, 'endDay' => $endDay]);
 $layout_content = include_template('layout.php', [
     'user_auth' => $is_auth,
     'title' => $title,
