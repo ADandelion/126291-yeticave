@@ -1,4 +1,4 @@
-  CREATE DATABASE  YetiCave
+  CREATE DATABASE  126291-yeticave
     DEFAULT CHARACTER SET utf8
     DEFAULT COLLATE utf8_general_ci;
 
@@ -6,13 +6,13 @@
 
   CREATE TABLE lots (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    date_create DATETIME,
+    date_create DEFAULT CURRENT_TIMESTAMP,
     name VARCHAR(30) NOT NULL,
     description VARCHAR(30) NOT NULL,
-    image BIGINT(20) UNSIGNED,
+    image BIGINT(20) UNSIGNED NOT NULL,
     starting_price INT,
     date_expire DATETIME,
-    path_lot VARCHAR (20),
+    bet_step INT,
     user_id INT NOT NULL,
     winner_id INT NOT NULL,
     category_id INT NOT NULL
@@ -20,13 +20,13 @@
 
   CREATE TABLE bets (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    add_date DATETIME,
+    add_date DEFAULT CURRENT_TIMESTAMP,
     price INT,
     user_id INT NOT NULL,
     lot_id INT NOT NULL
   );
 
-  CREATE TABLE category (
+  CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR (30)
   );
@@ -39,6 +39,4 @@
     contact VARCHAR(60),
     avatar VARCHAR(255),
     date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    lot_id INT NOT NULL,
-    bet_id INT NOT  NULL
   );
