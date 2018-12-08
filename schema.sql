@@ -38,5 +38,5 @@
     name VARCHAR(30),
     contact VARCHAR(60) NOT NULL,
     avatar VARCHAR(255),
-    date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
