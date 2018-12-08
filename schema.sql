@@ -34,9 +34,9 @@
   CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR (30) NOT NULL UNIQUE,
-    password VARCHAR(20),
+    password VARCHAR(20) NOT NULL,
     name VARCHAR(30),
-    contact VARCHAR(60),
+    contact VARCHAR(60) NOT NULL,
     avatar VARCHAR(255),
     date_registered TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   );
