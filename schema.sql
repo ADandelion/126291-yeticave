@@ -14,8 +14,8 @@
     `date_expire` DATETIME,
     `bet_step` INT,
     `user_id` INT NOT NULL,
-    `winner_id` INT NOT NULL,
-    `category_id` INT NOT NULL
+    `winner_id` INT,
+    `category_id` INT, NOT NULL
   );
 
   CREATE TABLE `bets` (
