@@ -10,7 +10,7 @@
     `name` VARCHAR(30) NOT NULL,
     `description` VARCHAR(30) NOT NULL,
     `image` BIGINT(20) UNSIGNED NOT NULL,
-    `starting`_price INT,
+    `starting_price` INT,
     `date_expire` DATETIME,
     `bet_step` INT,
     `user_id` INT NOT NULL,
