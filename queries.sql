@@ -1,3 +1,5 @@
+USE `126291-yeticave`;
+
 -- Добавляем список категорий;
 
 INSERT INTO `categories`
@@ -24,8 +26,12 @@ VALUES
 INSERT INTO `lots`
         (name, description, image, starting_price, date_expire, bet_step, user_id, winner_id, category_id)
 VALUES
-        ('2014 Rossignol District Snowboard', 'Доска мега крутая', 'img/lot-1.jpg', 10999, '0000-00-00 00-00-00', 0, 1, 0, 1),
-        ('Куртка для сноуборда DC Mutiny Charcoal', 'Куртка боевая', 'img/lot-5.jpg', 7500, '0000-00-00 00-00-00', 0, 2, 0, 4);
+        ('2014 Rossignol District Snowboard', 'Доска мега крутая', 'img/lot-1.jpg', 10999, '2018-12-11 00-00-00', 1, 1, NULL, 1),
+        ('DC Ply Mens 2016/2017 Snowboard', 'Еще одна крутая доска', 'img/lot-2.jpg', 159999, '2018-12-11 00-00-00', 1, 2, NULL, 1),
+        ('Крепления Union Contact Pro 2015 года размер L/XL', 'Крепления', 'img/lot-3.jpg', 8000, '2018-12-11 00-00-00', 1, 2, NULL, 2),
+        ('Ботинки для сноуборда DC Mutiny Charcoal', 'Ботинки', 'img/lot-4.jpg', 10999, '2018-12-11 00-00-00', 1, 2, NULL, 3),
+        ('Куртка для сноуборда DC Mutiny Charcoal', 'Куртка боевая', 'img/lot-5.jpg', 7500, '2018-12-11 00-00-00', 1, 2, NULL, 4),
+        ('Маска Oakley Canopy', 'Куртка боевая', 'img/lot-6.jpg', 5000, '2018-12-11 00-00-00', 1, 2, NULL, 6);
 
 -- Добавляем ставки
 
@@ -46,18 +52,21 @@ SELECT * FROM categories;
 -- Каждый лот должен включать название, стартовую цену,
 -- ссылку на изображение, цену, название категории;
 
-SELECT lots.name, lots.image, categories.name  from lots
+SELECT lots.name, lots.starting_price, lots.image, bets.price, categories.name  from lots
 JOIN categories on lots.category_id = categories.id
+JOIN bets on lots.id = bets.lot_id
+WHERE lots.winner_id IS NULL
+AND
+ lots.date_expire != '2018-12-11'
 ORDER by date_create desc;
 
---- Я не очень понял на счет цены ? Какая цена?
 
 -- 3. показать лот по его id. Получите также название категории, к которой принадлежит лот
 
-SELECT lots.id, categories.name
-FROM lots
+SELECT * FROM lots
 JOIN categories
-ON lots.category_id = categories.id;
+ON lots.category_id = categories.id
+WHERE lots.id = 2;
 
 -- 4. обновить название лота по его идентификатору;
 
