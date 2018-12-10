@@ -52,13 +52,12 @@ SELECT * FROM categories;
 -- Каждый лот должен включать название, стартовую цену,
 -- ссылку на изображение, цену, название категории;
 
-SELECT lots.name, lots.starting_price, lots.image, bets.price, categories.name  from lots
+SELECT lots.date_create, lots.name, lots.starting_price, lots.image, bets.price, categories.name from lots
 JOIN categories on lots.category_id = categories.id
 JOIN bets on lots.id = bets.lot_id
 WHERE lots.winner_id IS NULL
-AND
- lots.date_expire != '2018-12-11'
-ORDER by date_create desc;
+AND lots.date_expire > NOW()
+ORDER by date_create desc LIMIT 1;
 
 
 -- 3. показать лот по его id. Получите также название категории, к которой принадлежит лот
