@@ -6,5 +6,4 @@ $midnightTime = date_create(date("Y-m-d H:i", strtotime("tomorrow")));
 $interval = date_diff($midnightTime, $currentTime);
 $endDay = $interval->format('%H:%I');
 
-
-
+var_dump($currentTime);
