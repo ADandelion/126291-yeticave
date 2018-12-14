@@ -4,7 +4,7 @@
             <ul class="promo__list">
                 <?php foreach ($categories as  $cat):  ?>
                     <li class="promo__item promo__item--boards">
-                        <a class="promo__link" href="pages/all-lots.html"><?=$cat; ?></a>
+                        <a class="promo__link" href="index.php?cat_id=<?=$cat['id']; ?>"><?=$cat['name']; ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -24,11 +24,11 @@
                            <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$item['name']; ?></a></h3>
                            <div class="lot__state">
                                <div class="lot__rate">
-                                   <span class="lot__amount"><?=formatPrice($item['price']); ?></span>
-                                   <span class="lot__cost"><?=formatPrice($item['price']); ?></span>
+                                   <span class="lot__amount"><?=formatPrice($item['starting_price']); ?></span>
+                                   <span class="lot__cost"><?=formatPrice($item['starting_price']); ?></span>
                                </div>
                                <div class="lot__timer timer">
-                                   <?=$endDay; ?>
+                                   <?=$item['date_create']; ?>
                            </div>
 
                            </div>

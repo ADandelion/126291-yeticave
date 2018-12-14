@@ -57,7 +57,7 @@ SELECT * FROM categories;
 -- ссылку на изображение, цену, название категории;
 
 SELECT  lots.name, lots.starting_price, lots.image, max(bets.price) AS price, categories.name AS cat_name
-from lots
+FROM lots
 JOIN categories on lots.category_id = categories.id
 LEFT JOIN bets on lots.id = bets.lot_id
 WHERE lots.winner_id IS NULL
