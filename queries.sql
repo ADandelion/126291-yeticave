@@ -56,7 +56,7 @@ SELECT * FROM categories;
 -- Каждый лот должен включать название, стартовую цену,
 -- ссылку на изображение, цену, название категории;
 
-SELECT  lots.name, lots.starting_price, lots.image, max(bets.price) AS price, categories.name AS cat_name
+SELECT  lots.name, lots.starting_price, lots.image, IFNULL(max(bets.price), lots.starting_price) AS price, categories.name AS cat_name
 FROM lots
 JOIN categories on lots.category_id = categories.id
 LEFT JOIN bets on lots.id = bets.lot_id
